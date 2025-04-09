@@ -47,8 +47,6 @@ namespace harom
             CancelButton.Click += CBUttonEvent;
 
             OrderButton.Click += OrderEvent;
-
-            this.KeyUp += Enter;
         }
 
         void ClearTextBox(object s, EventArgs e)
@@ -84,36 +82,8 @@ namespace harom
                 if (int.TryParse(quantityBox.Text, out quantity))
                 {
                     fullprice += onePrice * quantity;
-                    panel.Children.Add(new Label() { Content = $"{fillingBox.Text} palacsinta\n{pastatypeBox.Text} tészta\n{quantityBox.Text} darab" });
+                    panel.Children.Add(new Label() { Margin = new Thickness(0, 20, 0, -20), Content = $"{fillingBox.Text} palacsinta\n{pastatypeBox.Text} tészta\n{quantityBox.Text} darab" });
                     priceBox.Content = $"Összesen: {fullprice} Ft";
-                }
-            }
-            catch (Exception x)
-            {
-                MessageBox.Show(x.Message);
-            }
-        }
-
-        void Enter(object s, KeyEventArgs e)
-        {
-            try
-            {
-                if (e.Key == Key.Enter)
-                {
-                    try
-                    {
-                        int quantity = int.Parse(quantityBox.Text);
-                        if (int.TryParse(quantityBox.Text, out quantity))
-                        {
-                            fullprice += onePrice * quantity;
-                            panel.Children.Add(new Label() { Content = $"{fillingBox.Text} palacsinta\n{pastatypeBox.Text} tészta\n{quantityBox.Text} darab" });
-                            priceBox.Content = $"Összesen: {fullprice} Ft";
-                        }
-                    }
-                    catch (Exception x)
-                    {
-                        MessageBox.Show(x.Message);
-                    }
                 }
             }
             catch (Exception x)

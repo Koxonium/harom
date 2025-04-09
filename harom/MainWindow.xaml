@@ -19,14 +19,17 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Label Content="Palacsinta rendelés" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="30"/>
+        <Label Content="Palacsinta rendelés" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="25"/>
         <TextBox Name="quantityBox" Text="Palacsinta darabszám" Tag="Palacsinta darabszám" Grid.Row="1" VerticalAlignment="Center" FontSize="30" Margin="20 0"/>
         <TextBox Name="pastatypeBox" Text="Tészta típusa" Tag="Tészta típusa" Grid.Row="2" VerticalAlignment="Center" FontSize="30" Margin="20 0"/>
         <TextBox Name="fillingBox" Text="Töltelék típusa" Tag="Töltelék típusa" Grid.Row="3" VerticalAlignment="Center" FontSize="30" Margin="20 0"/>
         <Button Name="AddButton" Content="Hozzáadás" Grid.Row="4" Margin="80 20" FontSize="15"/>
         <Button Name="CancelButton" Content="Mégse" Grid.Row="5" Margin="80 20" FontSize="15"/>
         <Button Name="OrderButton" Content="Rendelés" Grid.Row="5" Grid.Column="1" Margin="80 20" FontSize="15"/>
-        <StackPanel Name="panel" Orientation="Vertical" Background="White" Grid.Column="1" Grid.Row="1" Grid.RowSpan="4" Margin="30 0"/>
-        <Label Name="priceBox" Content="Összesen: " Grid.Row="4" Grid.Column="1" Margin="30 0" VerticalAlignment="Bottom" FontSize="20" Background="LightGray"/>
+        <ScrollViewer Grid.Row="1" Grid.RowSpan="4" Grid.Column="1">
+            <StackPanel Name="panel" Orientation="Vertical" Background="White" Grid.Column="1"  Margin="30 0"/>
+        </ScrollViewer>
+        <Label Name="orders" Content="Rendelés részletei:" Grid.Column="1" Margin="30.2,70,46.6,0" VerticalAlignment="Top" FontSize="10" Background="Beige" Width="320" Grid.RowSpan="2"/>
+        <Label Name="priceBox" Content="Összesen: " Grid.Row="4" Grid.Column="1" Margin="30.2,0,46.6,0.4" VerticalAlignment="Bottom" FontSize="20" Background="LightGray" Width="320"/>
     </Grid>
 </Window>
