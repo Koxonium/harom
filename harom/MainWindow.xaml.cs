@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.IO;
 
 namespace harom
 {
@@ -23,6 +24,9 @@ namespace harom
 
         int fullprice;
         int onePrice = 200;
+        string fileName = "data.txt";
+
+        List<Pencake> all = new List<Pencake>();
         public MainWindow()
         {
             InitializeComponent();
@@ -84,6 +88,12 @@ namespace harom
                     fullprice += onePrice * quantity;
                     panel.Children.Add(new Label() { Margin = new Thickness(0, 20, 0, -20), Content = $"{fillingBox.Text} palacsinta\n{pastatypeBox.Text} tészta\n{quantityBox.Text} darab" });
                     priceBox.Content = $"Összesen: {fullprice} Ft";
+                    Pencake pencake = new Pencake();
+                    pencake.pQuantity = int.Parse(quantityBox.Text);
+                    pencake.pType = pastatypeBox.Text;
+                    pencake.pFill = fillingBox.Text;
+                    saveOrder(fileName, pencake);
+                    all.Add(pencake);
                 }
             }
             catch (Exception x)
@@ -97,6 +107,14 @@ namespace harom
             panel.Children.Clear();
             fullprice = 0;
             priceBox.Content = "Összesen: ";
+        }
+
+        void saveOrder(string filename, Pencake onePencake)
+        {
+            using (StreamWriter write = new StreamWriter(filename, true, Encoding.UTF8))
+            {
+                write.WriteLine($"{onePencake.pQuantity};{onePencake.pType};{onePencake.pFill}");
+            }
         }
     }
 }
